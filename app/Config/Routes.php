@@ -32,7 +32,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Users::index');
 $routes->match(['get','post'],'signup','Users::register');
-$routes->get('signin', 'Users::signInInstead');
+$routes->match(['get','post'],'signin','Users::signInInstead');
+// $routes->get('signin', 'Users::signInInstead');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

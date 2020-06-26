@@ -2,8 +2,11 @@
 
 class Users extends BaseController
 {
+	//login
 	public function index()
 	{
+		$data = [];
+		helper(['form']);
 		return view('auths/login');		
 	}
 	//Register

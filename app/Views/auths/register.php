@@ -36,7 +36,7 @@
           NEXT
         </button>
         <div class="mt-2">
-          <a href="/signin" class="small text-uppercase">
+          <a href="/" class="small text-uppercase">
             SIGN IN INSTEAD
           </a>
         </div>
