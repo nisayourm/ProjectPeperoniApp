@@ -16,8 +16,5 @@ class Users extends BaseController
 	}
 	// SIGN IN INSTEAD
 
-	public function signInInstead()
-	{
-		return view('index');		
-	}
+
 }

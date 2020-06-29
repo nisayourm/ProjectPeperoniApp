@@ -16,44 +16,19 @@
 						<th>Name</th>
 						<th>Ingredients</th>
 						<th>Price</th>
-						<th></th>
+						<th>Status</th>
 					</tr>
-					<tr>
-						<td class="pizzaName">Jack Pizza</td>
-						<td>Tomatoes, ham, cheese, peperoni</td>
-						<td class="text-success font-weight-bolder">15$</td>
-						<td>
-							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="pizzaName">Seiha Pizza</td>
-						<td>Tomatoes, ham, cheese, peperoni</td>
-						<td  class="text-success font-weight-bolder">1.5$</td>
-						<td>
-							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="pizzaName">Rady Pizza</td>
-						<td>Tomatoes, ham, cheese, peperoni</td>
-						<td  class="text-success font-weight-bolder">1500$</td>
-						<td>
-							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="pizzaName">Ronan Pizza</td>
-						<td>Tomatoes, ham, cheese, peperoni</td>
-						<td  class="text-success font-weight-bolder">1$</td>
-						<td>
-							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-						</td>
-					</tr>
+					<?php foreach($peperoniList as $allPizza):?>
+						<tr>
+							<td><?= $allPizza['name']?></td>
+							<td><?= $allPizza['ingredients']?></td>
+							<td><?= $allPizza['price']." $"?></td>
+							<td>
+								<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
+								<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
+							</td>
+						</tr>
+					<?php endforeach?>
 				</table>
 			</div>
 			<div class="col-2"></div>
@@ -75,7 +50,7 @@
         
         <!-- Modal body -->
         <div class="modal-body text-right">
-			<form  action="/" method="post">
+			<form  action="/addPizza" method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Pizza name">
 				</div>

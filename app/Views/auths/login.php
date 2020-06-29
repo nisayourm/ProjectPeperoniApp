@@ -7,22 +7,22 @@
     </div>
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/signin" method="post">
+    <form class="auth__form" autocomplete="off" action="/listPizza" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">Peperoni App</h3>
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="email" class="form-control" placeholder="Enter email">
+            <input type="email" class="form-control" placeholder="Enter email" name="email">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" name="password">
           </div>
         </div>
       </div>
       <div class="auth__form_actions">
-        <button class="btn btn-primary btn-lg btn-block">
+        <button class="btn btn-primary btn-lg btn-block" name="insert">
           NEXT
         </button>
         <div class="mt-2">

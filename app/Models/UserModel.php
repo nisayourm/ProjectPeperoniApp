@@ -8,7 +8,15 @@ class UserModel extends Model
     protected $primaryKey = 'id';
 
     protected $returnType     = 'array';
-    protected $allowedFields = ['email', 'password', 'address'];
+    protected $allowedFields = ['email','password'];
+
+    public function addStudent($student)
+{ 
+    $this->insert([
+            'email'=>$student['email'],
+            'password'=>$student['password'],
+    ]);
+}
 
 }
 
