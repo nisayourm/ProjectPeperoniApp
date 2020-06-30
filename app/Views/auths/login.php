@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/listPizza" method="post">
+    <form class="auth__form" autocomplete="off" action="/listPizzas" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">Peperoni App</h3>
         <div>
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="auth__form_actions">
-        <button class="btn btn-primary btn-lg btn-block" name="insert">
+        <button class="btn btn-primary btn-lg btn-block">
           NEXT
         </button>
         <div class="mt-2">

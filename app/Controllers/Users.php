@@ -1,20 +1,51 @@
 <?php namespace App\Controllers;
-
+use App\Models\UserModel;
 class Users extends BaseController
 {
-	//login
 	public function index()
 	{
-		$data = [];
-		helper(['form']);
-		return view('auths/login');		
+		return view('auths/login');
 	}
-	//Register
-	public function register()
+	
+		public function register()
+		{
+			
+			return view('auths/register');
+		}
+
+	public function registerUser()
 	{
-		return view('auths/register');		
+		helper(['form']);
+		$userModel = new UserModel();
+		$data =[];
+		if($this->request->getMethod()=="post")
+		 {
+			$rules = [
+				'email'=>'required|min_length[6]|max_length[50]|valid_email',
+				'password'=>'required|min_length[8]|max_length[20]',
+				'address'=>'required',
+				
+			];
+			if($this->validate($rules))
+				{
+					$userEmail = $this->request->getVar('email');
+					$userPassword = $this->request->getVar('password');
+					$userAddress = $this->request->getVar('address');
+
+					$userData = array(
+						'email'=>$userEmail,
+						'password'=>$userPassword,
+						'address'=>$userAddress,
+					); 
+					$userModel->userLogin($userData);
+					return redirect()->to('/');
+					
+				}else{
+					$data['validation']= $this->validator;	
+					return view('auths/register',$data);
+				}
+		 }
+		return view('auths/register');
 	}
-	// SIGN IN INSTEAD
-
-
+	
 }

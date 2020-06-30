@@ -33,8 +33,19 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'Users::index');
 $routes->match(['get','post'],'signup','Users::register');
-$routes->match(['get','post'],'listPizza','Pizza::listPizza');
-$routes->match(['get','post'],'addPizza','Pizza::addPizza');
+$routes->get('/pizza', 'Pizza::index');
+$routes->match(['get','post'],'listPizzas','Pizza::listPizzas');
+$routes->match(['get','post'],'/signout', 'User::registerUser');
+
+// $routes->match(['get','post'],'addPizza','Pizza::addPizza');
+
+
+	// $routes->get('listPizzas', 'Pizza::index');
+	// $routes->get('singin', 'Users::index');
+	// $routes->get('/signin', 'Users::index');
+	// $routes->get('signout', 'Users::singOut');
+	// $routes->match(['get','post'],'/signout', 'Users::registerUser');
+
 
 // $routes->get('signin', 'Users::signInInstead');
 /**
