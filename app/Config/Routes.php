@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Users');
+$routes->setDefaultController('User');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,23 +31,20 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-$routes->get('/', 'Users::index');
-$routes->match(['get','post'],'signup','Users::register');
-$routes->get('/pizza', 'Pizza::index');
-$routes->match(['get','post'],'listPizzas','Pizza::listPizzas');
-$routes->match(['get','post'],'/signout', 'User::registerUser');
+//For controler User when call view
+ $routes->add('/', 'User::index');
+ $routes->add('register', 'User::register');
+ $routes->add('signin', 'User::userLogout');
 
-// $routes->match(['get','post'],'addPizza','Pizza::addPizza');
+// For controler Pizza when call view
+ $routes->add('index', 'Pizza::viewsPizza');
+ $routes->add('pizza', 'Pizza::addPizza');
+ $routes->add('edit', 'Pizza::updatePizza');
+ $routes->add('remove/(:num)', 'Pizza::deletePizza/$1');
 
-
-	// $routes->get('listPizzas', 'Pizza::index');
-	// $routes->get('singin', 'Users::index');
-	// $routes->get('/signin', 'Users::index');
-	// $routes->get('signout', 'Users::singOut');
-	// $routes->match(['get','post'],'/signout', 'Users::registerUser');
+ 
 
 
-// $routes->get('signin', 'Users::signInInstead');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
