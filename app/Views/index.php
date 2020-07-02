@@ -2,33 +2,41 @@
 <?= $this->section('content') ?>
 <?= $this->include('layouts/navbar') ?>
     <div class="container mt-5">
+
+	<?= session()->get('email') ?>
+	
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-8">
 				<div class="text-right">
-					<a href="index" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
-						<i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;Add
-					</a>
+
+						<a href="index" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
+							<i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;Add
+						</a>
+				
 				</div>
 				<hr>
 				<table class="table table-borderless table-hover">
 					<tr>
+						<th  class="hide">Id</th>
 						<th>Name</th>
 						<th>Ingredients</th>
 						<th>Price</th>
-						<th></th>
+						<th>Action</th>
+
 					</tr>
 					
 					<?php foreach($pizzas as $pizza):?>	
 					<tr>
-						<td><?= $pizza['name']?></td>
-						<td><?= $pizza['ingredients']?></td>
-						<td><?= $pizza['prize']?>$</td>
+						<td class="hide"><?= $pizza['id'];?></td>
+						<td><?= $pizza['name'];?></td>
+						<td><?= $pizza['ingredients'];?></td>
+						<td><?= $pizza['price'];?>$</td>
 						<td>
-							<a href="edit" data-toggle="modal" data-target="#updatePizza">
-								<i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i>
+							<a href="/edit/<?= $pizza['id'] ?>" data-toggle="modal" data-target="#updatePizza">
+								<i class="material-icons text-info editdata " data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i>
 							</a>
-							<a href="remove/<?= $pizza['id']?>" data-toggle="tooltip" title="Delete Pizza!" data-placement="right">
+							<a href="/remove/<?= $pizza['id']?>" data-toggle="tooltip" title="Delete Pizza!" data-placement="right">
 								<i class="material-icons text-danger">delete</i>
 							</a>
 						</td>
@@ -99,15 +107,21 @@
         
         <!-- Modal body -->
         <div class="modal-body text-right">
-			<form  action="/" method="post">
+			<form  action="pizza/updatePizzs" method="post">
+
+				<div class="form-group hide">
+					<input type="text" id="id" name="id">
+				</div>
+
 				<div class="form-group">
-					<input type="text" class="form-control" value="Rady Pizza">
+					<input type="text" class="form-control" id="name" name="name">
+				</div>
+
+				<div class="form-group">
+					<input type="text" class="form-control" id="price" name="price">
 				</div>
 				<div class="form-group">
-					<input type="number" class="form-control" value="100">
-				</div>
-				<div class="form-group">
-					<textarea name=""  class="form-control">Cheese, Tomatoes, Chicken, Salad</textarea>
+					<textarea name="ingredients" id="ingredients" class="form-control"></textarea>
 				</div>
 			<a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	 &nbsp;
@@ -118,4 +132,25 @@
     </div>
   </div>
   <!-- =================================END MODEL UPDATE==================================================== -->
+
+  <script>
+	$(document).ready(function(){
+		
+		$('.editdata').on('click',function(){
+			$('#updatePizza');
+			$tr = $(this).closest('tr');
+			var data = $tr.children('td').map(function(){
+				return $(this).text();
+			}).get();
+ 
+			console.log(data);
+			$('#id').val(data[0]);
+			$('#name').val(data[1]);
+			$('#ingredients').val(data[2]);
+			$('#price').val(data[3]);
+
+		});
+	});
+</script>
+
 <?= $this->endSection() ?>

@@ -26,17 +26,17 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  * Route Definitions
  * --------------------------------------------------------------------
- */
+ */ 
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-//For controler User when call view
+
  $routes->add('/', 'User::index');
  $routes->add('register', 'User::register');
- $routes->add('signin', 'User::userLogout');
+ $routes->add('signin', 'User::logout');
 
-// For controler Pizza when call view
+
  $routes->add('index', 'Pizza::viewsPizza');
  $routes->add('pizza', 'Pizza::addPizza');
  $routes->add('edit', 'Pizza::updatePizza');

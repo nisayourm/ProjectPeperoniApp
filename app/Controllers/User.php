@@ -8,7 +8,7 @@ class User extends BaseController
 		helper(['form']);
 
 		if($this->request->getMethod() == 'post'){
-
+			// set the roule for email and password
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required',
@@ -16,18 +16,19 @@ class User extends BaseController
 
 			$errors = [
 				'password' => [
-					'validateUser' => 'Email or Password don\'t match'
+					'validateUser' => 'you don\t have account yet|| Please Register'
 				]
 			];
-
+				// validation form
 			if(!$this->validate($rules, $errors)){
 				$data['validation'] = $this->validator; 
 			}else{
 				$model = new UserModel();
 
-				$user = $model->where('email', $this->request->getVar('email'))->first();
+				$user = $model->where('email',$this->request->getVar('email'))->first();
+				$user = $model->where('password', $this->request->getVar('password'))->first();
 				$this->setUserSession($user);
-				return redirect()->to('index');
+				return redirect()->to('/index');
 			}
 		}
 
@@ -36,20 +37,21 @@ class User extends BaseController
 	//--------------------------------------------------------------------
 
 
-	private function setUserSession($user){
+	public function setUserSession($user){
 
 		$data = [
 			'id' => $user['id'],
 			'email' => $user['email'],
 			'address' => $user['address'],
-			'isLoggedIn' => true,
+			'role' =>  $user['role'],
+			'isLoggedIn' => true
 		];
 
 		session()->set($data);
 		return true;
 	}
     
-    // create new user 
+    // register the user to databast
 
     public function register()
 	{
@@ -69,13 +71,13 @@ class User extends BaseController
 			}else{
 				$model = new UserModel();
 
-				$newData = [
+				$addData = [
 					'email' =>$this->request->getVar('email'),
 					'password' =>$this->request->getVar('password'),
 					'address' =>$this->request->getVar('address'),
 				];
 
-				$model->createUser($newData);
+				$model->createUser($addData);
 				$session = session();
 				$session->setFlashdata('success', 'Successful Registration!!!');
 				return redirect()->to('/');
@@ -84,12 +86,11 @@ class User extends BaseController
 
 		return view('register', $data);
 	}
-
-	public function userLogout()
+	// user logout
+	public function logout()
 	{
 		section()->destroy();
 		return redirect()->to('/');
 	}
-	//--------------------------------------------------------------------
 
 }

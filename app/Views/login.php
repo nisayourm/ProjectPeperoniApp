@@ -29,6 +29,8 @@
           </div>
         </div>
       </div>
+
+    
       <div class="auth__form_actions">
         <button class="btn btn-primary btn-lg btn-block">
           NEXT
@@ -38,7 +40,17 @@
             CREATE ACCOUNT
           </a>
         </div>
+       
       </div>
+      <hr>
+          <?php if(isset($validation)): ?>
+            <div class="col-12">
+              <div class="alert alert-danger" role="alert">
+                <?= $validation->listErrors()?>
+              </div>
+            </div>
+          <?php endif;?>
+
     </form>
   </div>
 </div>

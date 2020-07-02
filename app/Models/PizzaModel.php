@@ -7,13 +7,13 @@ class PizzaModel extends Model
     protected $table      = 'peperoni';
     protected $primaryKey = 'id';
     protected $returnType     = 'array';
-    protected $allowedFields = ['name', 'prize', 'ingredients'];   
+    protected $allowedFields = ['name','ingredients','price'];   
 
     public function createPizza($pizza) 
     {
         $this->insert([
             'name'=>$pizza['name'],
-            'prize'=>$pizza['prize'],
+            'prize'=>$pizza['price'],
             'ingredients'=>$pizza['ingredients']
         ]);
     }

@@ -30,7 +30,7 @@ class Pizza extends BaseController
 				$pizza = new PizzaModel();
 				$newData = [
 					'name' =>$this->request->getVar('name'),
-					'prize' =>$this->request->getVar('prize'),
+					'prize' =>$this->request->getVar('price'),
 					'ingredients' =>$this->request->getVar('ingredients'),
 				];
 
@@ -51,7 +51,14 @@ class Pizza extends BaseController
         return redirect()->to('/index');
     }
 
-    public function updatePizza()
+    public function edit($id)
+	{
+		$pizza = new PizzaModel();
+        $data['edit'] = $pizza->find($id);
+		return view('index',$data);
+	}
+
+    public function updatePizzs()
 	{
 		$pizza = new PizzaModel();
         $pizza->update($_POST['id'],$_POST);

@@ -26,20 +26,24 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="">I'm a manager
+                <input type="checkbox" class="form-check-input" value="1" name="role">I'm a manager
             </label>
+            
+            <!-- message of the error on validation -->
+            <hr>
+          <?php if(isset($validation)): ?>
+            <div class="col-12">
+              <div class="alert alert-danger" role="alert">
+                <?= $validation->listErrors()?>
+              </div>
+            </div>
+          <?php endif;?>
+
         </div>
         </div>
       </div>
 
-      <hr>
-      <?php if(isset($validation)): ?>
-        <div class="col-12">
-          <div class="alert alert-danger" role="alert">
-            <?= $validation->listErrors()?>
-          </div>
-        </div>
-      <?php endif;?>
+      
       <div class="auth__form_actions">
         <button class="btn btn-primary btn-lg btn-block">
           NEXT
