@@ -34,17 +34,17 @@ class User extends BaseController
 
 		return view('login', $data);
 	}
-	//--------------------------------------------------------------------
+	
 
-
+	// set the user
 	public function setUserSession($user){
 
 		$data = [
 			'id' => $user['id'],
 			'email' => $user['email'],
 			'address' => $user['address'],
-			'role' =>  $user['role'],
-			'isLoggedIn' => true
+			'role' =>  $user['role']
+		
 		];
 
 		session()->set($data);
@@ -75,6 +75,7 @@ class User extends BaseController
 					'email' =>$this->request->getVar('email'),
 					'password' =>$this->request->getVar('password'),
 					'address' =>$this->request->getVar('address'),
+					'role' =>$this->request->getVar('role'),
 				];
 
 				$model->createUser($addData);

@@ -9,6 +9,7 @@ class UserModel extends Model
     protected $returnType     = 'array';
     protected $allowedFields = ['email','password','address','role'];
 
+    // insert user
     public function createUser($user) 
     {
         $this->insert([

@@ -2,6 +2,7 @@
 use App\Models\PizzaModel;
 class Pizza extends BaseController
 {
+	// for viewPizza
 	public function viewsPizza()
 	{
         $data = [];
@@ -11,6 +12,7 @@ class Pizza extends BaseController
 		return view('index', $data);
 	}
 
+	// add pizza to databast
     public function addPizza()
 	{
 		$data = [];
@@ -20,7 +22,7 @@ class Pizza extends BaseController
 
 			$rules = [
 				'name' => 'required',
-				'prize' => 'required',
+				'price' => 'required',
 				'ingredients' => 'required'
 			];
 
@@ -30,7 +32,7 @@ class Pizza extends BaseController
 				$pizza = new PizzaModel();
 				$newData = [
 					'name' =>$this->request->getVar('name'),
-					'prize' =>$this->request->getVar('price'),
+					'price' =>$this->request->getVar('price'),
 					'ingredients' =>$this->request->getVar('ingredients'),
 				];
 
@@ -43,21 +45,23 @@ class Pizza extends BaseController
 
 		return view('index', $data);
 	}
-
+	// delete pizza
     public function deletePizza($id)
     {
         $pizza = new PizzaModel();
         $pizza->delete($id);
         return redirect()->to('/index');
     }
-
+	// edit pizza
     public function edit($id)
 	{
 		$pizza = new PizzaModel();
         $data['edit'] = $pizza->find($id);
-		return view('index',$data);
+		return view('index',$data); 
 	}
 
+
+	// udate pizza
     public function updatePizzs()
 	{
 		$pizza = new PizzaModel();

@@ -14,7 +14,7 @@
       <li class="nav-item">
 
       <a class="nav-link text-uppercase" href="#">
-
+  <!-- get the email to show on menu -->
         <?php $username = strstr(session()->get('email'),'@',true) ?>
               <?= $username ?>
         |</a>

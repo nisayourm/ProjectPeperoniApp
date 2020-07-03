@@ -14,15 +14,15 @@
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="email" class="form-control" name="email" placeholder="Enter email" value="<?= set_value('email')?>">
+            <input type="email" class="form-control" name="email" placeholder="Enter email" id="email">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
-            <input type="password" class="form-control" name="password" placeholder="Password">
+            <input type="password" class="form-control" name="password" placeholder="Password" id="password">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Address</label>
-            <textarea name="address"  class="form-control" name="address" placeholder="Address" value="<?= set_value('address')?>"></textarea>
+            <textarea name="address"  class="form-control" name="address" placeholder="Address" id="address"></textarea>
           </div>
           <div class="form-check">
             <label class="form-check-label">

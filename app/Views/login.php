@@ -11,7 +11,7 @@
       <div class="auth__form_body">
         <h3 class="auth__form_title">Peperoni App</h3>
         <hr>
-
+           <!-- alete message success -->
         <?php if(session()->get('success')):?>
           <div class="alert alert-success" role="alert">
             <?= session()->get('success');?>
@@ -43,6 +43,7 @@
        
       </div>
       <hr>
+      <!-- alete message error -->
           <?php if(isset($validation)): ?>
             <div class="col-12">
               <div class="alert alert-danger" role="alert">

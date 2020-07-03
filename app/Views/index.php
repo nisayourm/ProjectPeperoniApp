@@ -25,7 +25,7 @@
 						<th>Action</th>
 
 					</tr>
-					
+					<!-- get data to show on table -->
 					<?php foreach($pizzas as $pizza):?>	
 					<tr>
 						<td class="hide"><?= $pizza['id'];?></td>
@@ -70,7 +70,7 @@
 					<input type="text" class="form-control" placeholder="Pizza name" name="name">
 				</div>
 				<div class="form-group">
-					<input type="number" class="form-control" placeholder="Prize in dollars" name="prize">
+					<input type="number" class="form-control" placeholder="Prize in dollars" name="price">
 				</div>
 				<div class="form-group">
 					<textarea name="ingredients" placeholder="Ingredients" class="form-control"></textarea>
@@ -79,7 +79,7 @@
 		 	 &nbsp;
 		  <input type="submit" value="CREATE" class="createBtn text-warning">
         </div>
-
+		 <!-- alete message error -->
 		<?php if(isset($validation)):?>
 			<div class="col-12">
 				<div class="alert alert-danger" role="alert">
@@ -120,6 +120,7 @@
 				<div class="form-group">
 					<input type="text" class="form-control" id="price" name="price">
 				</div>
+				
 				<div class="form-group">
 					<textarea name="ingredients" id="ingredients" class="form-control"></textarea>
 				</div>
@@ -132,7 +133,7 @@
     </div>
   </div>
   <!-- =================================END MODEL UPDATE==================================================== -->
-
+<!-- get data to update data -->
   <script>
 	$(document).ready(function(){
 		

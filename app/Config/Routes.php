@@ -31,15 +31,21 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-
+//set the routes for user
+// form login
  $routes->add('/', 'User::index');
+//  set to link to register accound
  $routes->add('register', 'User::register');
+//  for singin and singout on mune
  $routes->add('signin', 'User::logout');
 
-
+//set the routes for pizza
  $routes->add('index', 'Pizza::viewsPizza');
+ //add pizza
  $routes->add('pizza', 'Pizza::addPizza');
+//  update pizza
  $routes->add('edit', 'Pizza::updatePizza');
+//  delete pizza
  $routes->add('remove/(:num)', 'Pizza::deletePizza/$1');
 
  
